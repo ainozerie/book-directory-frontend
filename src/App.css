@@ -1,38 +1,76 @@
-.App {
-  text-align: center;
+:root {
+    --black: #0D1926;
+    --green: #83ff08;
+    --red: #ff0883;
+    --grey: #b6b6b6;
+    --white: #FFFFFF;
+    --orange: #ff8308;
+    --blue: #0883ff;
+    --violet: #8308ff;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 20px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--black);
+    height: 100vh;
+    width: 100vw;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+main {
+    height: 500px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
 }
-
-.App-link {
-  color: #61dafb;
+.title {
+    color: var(--white);
 }
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: ease-in-out;
+    transition-duration: 0.1s;
+}
+.submit {
+    color: var(--green);
+}
+.delete {
+    color: var(--red);
+}
+.back {
+    color: var(--grey);
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+}
+.back:hover {
+    color: var(--red);
+}
+button:hover {
+    scale: 1.02;
+}
+input {
+    width: 350px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--grey);
+    color: var(--white);
+}
+input:focus {
+    outline: none;
+}
+.line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
 }
