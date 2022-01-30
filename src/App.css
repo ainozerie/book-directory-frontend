@@ -12,7 +12,7 @@
     margin: 0;
     padding: 0;
     font-family: 'Source Code Pro', monospace;
-    font-size: 20px;
+    font-size: 16px;
 }
 body {
     display: flex;
@@ -24,7 +24,7 @@ body {
 }
 main {
     height: 500px;
-    width: 500px;
+    width: 700px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -40,7 +40,9 @@ button {
     border: none;
     cursor: pointer;
     transition: ease-in-out;
-    transition-duration: 0.1s;
+    transition-duration: 0.3s;
+    border: 1px solid rgb(100, 100, 100, 0);
+
 }
 .submit {
     color: var(--green);
@@ -48,15 +50,19 @@ button {
 .delete {
     color: var(--red);
 }
+.add {
+    color: var(--orange);
+}
 .back {
     color: var(--grey);
-
+    position: absolute;
+    right: 0;
 }
 .back:hover {
     color: var(--red);
 }
 button:hover {
-    scale: 1.02;
+    border-bottom: 1px solid var(--white);
 }
 input {
     width: 350px;
@@ -71,6 +77,33 @@ input:focus {
 .line {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 25px;
+}
+.line:nth-child(2) {
+    padding-top: 20px;
+}
+.toLeft {
+    justify-content: flex-start;
+}
+.toRight {
+    justify-content: flex-end;
+}
+.toCenter {
+    justify-content: center;
+}
+.edit, .remove {
+    opacity: 0;
+    color: var(--grey);
+}
+.edit:hover {
+    color: var(--orange);
+}
+.remove:hover {
+    color: var(--red);
+}
+.book p {
+    font-size: 14px;
+}  
+.book:hover .edit, .book:hover .remove  {
+    opacity: 1;
 }

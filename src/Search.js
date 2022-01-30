@@ -11,9 +11,12 @@ import axios from 'axios';
 export default class Search extends Component {
   state = {};
 
+
   changehandler = (event) => {
     this.setState({[event.target.name]: event.target.value});
-    console.log(this.state);
+  }
+  clickhandler = () => {
+    
   }
   
   
@@ -21,10 +24,12 @@ export default class Search extends Component {
   render() {
     return <main>
         <div className='line'>
-            <Input name='search' placeholder='enter a name or an author' changehandler={this.changehandler} />
-            <Button name='search' class='submit' /><Back />
+            <Link to='/results'><Button name='show all' class='submit'/></Link>
+            <Title content='or' />
+            <Input name='search' placeholder='enter a name or an author' changehandler={this.props.searchhandler} />
+            <Link to='/results'><Button name='search' class='submit' /></Link>
         </div>
-        <Link to='/results'><Title content='results' /></Link>
+        <Back />
         
     </main>;
   }
