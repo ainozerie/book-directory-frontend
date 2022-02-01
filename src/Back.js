@@ -1,12 +1,12 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from './Button';
 
 
 
-export default function Back() {
+export default function Back(props) {
   const navigate = useNavigate();
   return <>
-    <Button class='back' clickhandler={()=> navigate(-1)} name='back' />
+    <Link to=''><Button class='back' clickhandler={()=> { navigate(-1)}} name='back' /></Link>
   </>;
 }

@@ -13,12 +13,11 @@ export default class Add extends Component {
 
   changehandler = (event) => {
     this.setState({[event.target.name]: event.target.value});
-    console.log(this.state);
+    console.log(this.state.bookId)
   }
   clickhandler = () => {
     let data = {
-      name: this.state.name,
-      author: this.state.author
+      bookId: this.state.bookId
     }
     let axiosConfig = {
       headers: {
@@ -26,7 +25,8 @@ export default class Add extends Component {
         "Access-Control-Allow-Origin": "*",
       }
     };
-    axios.post('http://localhost:8080/', data, axiosConfig)
+    console.log(this.state.bookId)
+    axios.delete('http://localhost:8080/' + this.state.bookId)
     .then(function (response) {
       console.log(response);
     })
@@ -40,16 +40,15 @@ export default class Add extends Component {
     if (this.state.request === 'success') {
       return <main>
         <div className='container'>
-          <Title class='title submit' content='Successfully added!'/><Back />
+          <Title class='title delete' content='Successfully deleted!'/><Back />
         </div>
       </main>
     } else {
       return <main>
         <Title class='title heading' content='Fill in the fields:' />
-        <Input name='name' placeholder='name of the book' changehandler={this.changehandler}/>
-        <Input name='author' placeholder='book author' changehandler={this.changehandler}/>
+        <Input name='bookId' placeholder='book ID' changehandler={this.changehandler}/>
           <div className='container'>
-              <Button class='submit' name='add' clickhandler={this.clickhandler}/><Back />
+              <Button class='delete' name='delete' clickhandler={this.clickhandler}/><Back />
           </div>
       </main>;
     }

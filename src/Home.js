@@ -8,12 +8,7 @@ export default class Home extends Component {
   
   render() {
     return <main>
-        <div className='line'>
-        <Link to='/search'><Button name='find an existing book' class='submit' searchhandler={this.props.searchhandler}/></Link>
-        <Title content='or' />
-        <Link to='/add'><Button name='add a new one' class='add' /></Link>
-
-        </div>
+        <Link to='/results'><Button name='show books' class='submit'/></Link>
     </main>;
   }
 }

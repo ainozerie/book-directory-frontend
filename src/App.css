@@ -20,90 +20,79 @@ body {
     justify-content: center;
     background-color: var(--black);
     height: 100vh;
-    width: 100vw;
+    width: 100vw;   
 }
 main {
-    height: 500px;
-    width: 700px;
     display: flex;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
-    gap: 15px;
-    position: relative;
-}
-.title {
-    color: var(--white);
 }
 button {
     background-color: transparent;
     border: none;
-    cursor: pointer;
+    color: var(--grey);
     transition: ease-in-out;
-    transition-duration: 0.3s;
-    border: 1px solid rgb(100, 100, 100, 0);
-
+    transition-duration: 0.2s;
+    cursor: pointer;
+    border: 1px solid transparent;
+    
+}
+button:hover {
+    border-bottom: 1px solid var(--grey);
 }
 .submit {
     color: var(--green);
 }
-.delete {
-    color: var(--red);
-}
 .add {
+    color: var(--green);
+}
+.edit {
     color: var(--orange);
 }
-.back {
-    color: var(--grey);
-    position: absolute;
-    right: 0;
+.delete {
+    color: var(--blue);
 }
 .back:hover {
     color: var(--red);
 }
-button:hover {
-    border-bottom: 1px solid var(--white);
-}
-input {
-    width: 350px;
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid var(--grey);
-    color: var(--white);
-}
-input:focus {
-    outline: none;
-}
-.line {
+.container {
     display: flex;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
     gap: 25px;
 }
-.line:nth-child(2) {
-    padding-top: 20px;
-}
-.toLeft {
-    justify-content: flex-start;
-}
-.toRight {
-    justify-content: flex-end;
-}
-.toCenter {
+.column {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
 }
-.edit, .remove {
-    opacity: 0;
-    color: var(--grey);
+.toLeft {
+    align-items: flex-start;
 }
-.edit:hover {
-    color: var(--orange);
+.toRight {
+    align-items: flex-end;
 }
-.remove:hover {
-    color: var(--red);
+.book {
+    color: var(--white);
+    width: 400px;
 }
-.book p {
-    font-size: 14px;
-}  
-.book:hover .edit, .book:hover .remove  {
-    opacity: 1;
+span {
+    color: var(--violet);
+}
+
+.heading {
+    margin-bottom: 25px;
+    font-size: 18px;
+    color: var(--blue);
+}
+input {
+    margin-bottom: 15px;
+    width: 300px;
+}
+.sholders {
+    justify-content: space-between;
+}
+.short {
+    width: 235px;
 }

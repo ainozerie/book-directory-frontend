@@ -23,14 +23,6 @@ export default class Search extends Component {
 
   render() {
     return <main>
-        <div className='line'>
-            <Link to='/results'><Button name='show all' class='submit'/></Link>
-            <Title content='or' />
-            <Input name='search' placeholder='enter a name or an author' changehandler={this.props.searchhandler} />
-            <Link to='/results'><Button name='search' class='submit' /></Link>
-        </div>
-        <Back />
-        
     </main>;
   }
 }
