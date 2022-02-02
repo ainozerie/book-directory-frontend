@@ -1,13 +1,14 @@
 :root {
     --black: #0D1926;
-    --green: #83ff08;
+    --green: #70e000;
     --red: #ff0883;
     --grey: #b6b6b6;
     --white: #FFFFFF;
     --orange: #ff8308;
-    --blue: #0883ff;
-    --violet: #8308ff;
+    --blue: #407ba7;
+    --violet: #2ec4b6;
 }
+/* stop*/
 * {
     margin: 0;
     padding: 0;
@@ -51,10 +52,13 @@ button:hover {
     color: var(--orange);
 }
 .delete {
-    color: var(--blue);
+    color: var(--red);
+}
+.primary {
+    color: var(--violet);
 }
 .back:hover {
-    color: var(--red);
+    color: var(--violet);
 }
 .container {
     display: flex;
@@ -78,13 +82,13 @@ button:hover {
     width: 400px;
 }
 span {
-    color: var(--violet);
+    color: var(--blue);
 }
 
 .heading {
     margin-bottom: 25px;
     font-size: 18px;
-    color: var(--blue);
+    color: var(--violet);
 }
 input {
     margin-bottom: 15px;
@@ -95,4 +99,26 @@ input {
 }
 .short {
     width: 235px;
+}
+@media (max-width: 412px) {
+    .container {
+        flex-direction: column;
+    }
+    .buttons, .sholders {
+        flex-direction: row;
+    }
+    .column:first-child {
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+    }
+    .column:nth-child(2) {
+        width: 350px;
+    }
+    .book {
+        width: 350px;
+    }
+    .short {
+        width: 235px;
+    }
 }

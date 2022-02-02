@@ -4,50 +4,47 @@ import Back from './Back';
 import Button from './Button';
 import Input from './Input';
 import Title from './Title';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 export default class Add extends Component {
   state = {};
   
-
   changehandler = (event) => {
     this.setState({[event.target.name]: event.target.value});
-    console.log(this.state.bookId)
   }
   clickhandler = () => {
-    let data = {
-      bookId: this.state.bookId
-    }
-    let axiosConfig = {
-      headers: {
-        'Content-Type': 'application/json;charset=UTF-8',
-        "Access-Control-Allow-Origin": "*",
-      }
-    };
-    console.log(this.state.bookId)
-    axios.delete('http://localhost:8080/' + this.state.bookId)
-    .then(function (response) {
-      console.log(response);
+    axios.delete(this.props.url + this.state.bookId)
+    .then(response => {
+      this.setState({request: response.data})
     })
     .catch(function (error) {
       console.log(error);
     });
-    this.setState({request: 'success'})
   }
   
   render() {
-    if (this.state.request === 'success') {
+    if (this.state.request === 'Successfully deleted!') {
       return <main>
         <div className='container'>
-          <Title class='title delete' content='Successfully deleted!'/><Back />
+          <Title class='title delete' content={this.state.request}/><Back />
         </div>
       </main>
+    } else if (this.state.request === 'Not found') {
+        return (
+            <main>
+              <Title class='title delete' content={this.state.request} />
+              <div className='container buttons'>
+                <Link to='/add'><Button name='add' class='add'/></Link>
+                <Back />
+              </div>
+            </main>
+          )
     } else {
       return <main>
         <Title class='title heading' content='Fill in the fields:' />
         <Input name='bookId' placeholder='book ID' changehandler={this.changehandler}/>
-          <div className='container'>
+          <div className='container buttons'>
               <Button class='delete' name='delete' clickhandler={this.clickhandler}/><Back />
           </div>
       </main>;

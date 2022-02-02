@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Button from './Button';
 import Title from './Title';
 
 export default class Book extends Component {

@@ -4,7 +4,6 @@ import Back from './Back';
 import Button from './Button';
 import Input from './Input';
 import Title from './Title';
-import { Link, useNavigate } from 'react-router-dom';
 
 
 export default class Add extends Component {
@@ -14,24 +13,25 @@ export default class Add extends Component {
     name: '',
     author: ''
   };
-  
 
   changehandler = (event) => {
     this.setState({[event.target.name]: event.target.value});
     
   }
   loadhandler = () => {
-    axios.get('http://localhost:8080/' + this.state.bookId)
+    axios.get(this.props.url + this.state.bookId)
     .then(response => {
-      console.log(response.data);
-      this.setState({name: response.data.name, author: response.data.author, isLoaded: true, disabled: true});
+      if (response.data === 'Not found') {
+        this.setState({request: response.data});
+      } else {
+        this.setState({name: response.data.name, author: response.data.author, isLoaded: true, disabled: true});
+      }
     })
     .catch(function (error) {
       console.log(error);
     });
-
-    // this.setState({request: 'success'})
   }
+
   clickhandler = () => {
     let data = {
       bookId: this.state.bookId,
@@ -44,33 +44,36 @@ export default class Add extends Component {
         "Access-Control-Allow-Origin": "*",
       }
     };
-    axios.put('http://localhost:8080/', data, axiosConfig)
-    .then(function (response) {
-      console.log(response);
+    axios.put(this.props.url, data, axiosConfig)
+    .then(response => {
+      this.setState({request: response.data})
     })
     .catch(function (error) {
       console.log(error);
     });
-    this.setState({request: 'success'})
   }
   
   render() {
-    if (this.state.request === 'success') {
+    if (this.state.request === 'Not found') {
+      return <main>
+          <Title class='title delete' content={this.state.request}/><Back />
+      </main>
+    } else if (this.state.request === 'Successfully edited') {
       return <main>
         <div className='container'>
-          <Title class='title edit' content='Successfully edited!'/><Back />
+          <Title class='title edit' content={this.state.request}/><Back />
         </div>
       </main>
     } else {
       return <main>
         <Title class='title heading' content='Fill in the fields:' />
         <div className='container sholders'>
-          <Input disabled={(this.state.disabled)? 'disabled' : '' } class='short' name='bookId' placeholder='book ID' changehandler={this.changehandler}/>
-          <Button class='submit' name='load' clickhandler={this.loadhandler} />
+          <Input disabled={(this.state.disabled)? 'disabled' : '' } class='' name='bookId' placeholder='book ID' changehandler={this.changehandler}/>
         </div>
         <Input name='name' placeholder='name of the book' value={this.state.name} changehandler={this.changehandler}/>
         <Input name='author' placeholder='book author' value={this.state.author} changehandler={this.changehandler}/>
-          <div className='container'>
+          <div className='container buttons'>
+              <Button class='submit' name='get' clickhandler={this.loadhandler} />
               <Button class='edit' name='edit' clickhandler={this.clickhandler}/><Back />
           </div>
       </main>;

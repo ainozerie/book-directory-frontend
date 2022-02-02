@@ -5,7 +5,6 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import Search from './Search';
 import Add from './Add'
 import Results from './Results'
 import Edit from './Edit';
@@ -14,15 +13,17 @@ import Delete from './Delete';
 import React, { Component } from 'react';
 
 export default class App extends Component {
+  state = {
+    url: 'http://localhost:8080/'
+  }
   render() {
     return <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Home/>} />
-        <Route path='delete' element={<Delete />} />
-        <Route path='edit' element={<Edit />} />
-        <Route path='search' element={<Search />} />
-        <Route path='results' element={<Results />} />
-        <Route path='add' element={<Add/>} />
+        <Route path='/' element={<Home />} />
+        <Route path='delete' element={<Delete url={this.state.url}/>} />
+        <Route path='edit' element={<Edit url={this.state.url}/>} />
+        <Route path='results' element={<Results url={this.state.url}/>} />
+        <Route path='add' element={<Add url={this.state.url} />} />
       </Routes>
     </BrowserRouter>
   }
