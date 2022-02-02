@@ -1,7 +1,7 @@
 ### Book directory
 
 This is my project to practice some web technologies.
-Frontend is written with React, <a href='https://github.com/ainozerie/book-directory-backend'>backend</a> - Nodejs.
+Frontend is written with React, <a href='https://github.com/ainozerie/book-directory-backend'>backend</a> - Node.js.
 
 The app allows you store information about books.
 
