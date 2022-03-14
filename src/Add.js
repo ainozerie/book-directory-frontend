@@ -36,7 +36,7 @@ export default class Add extends Component {
   }
   
   render() {
-    if (this.state.request === 'Successfully added') {
+    if (this.state.request === 'successfully added') {
       return <main>
         <div className='container'>
           <Title class='title submit' content={this.state.request}/><Back />

@@ -14,8 +14,10 @@ export default class Add extends Component {
     this.setState({[event.target.name]: event.target.value});
   }
   clickhandler = () => {
+    console.log('clicked')
     axios.delete(this.props.url + this.state.bookId)
     .then(response => {
+      console.log(response.data)
       this.setState({request: response.data})
     })
     .catch(function (error) {
@@ -24,7 +26,7 @@ export default class Add extends Component {
   }
   
   render() {
-    if (this.state.request === 'Successfully deleted!') {
+    if (this.state.request === 'successfully deleted') {
       return <main>
         <div className='container'>
           <Title class='title delete' content={this.state.request}/><Back />

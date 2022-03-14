@@ -47,6 +47,7 @@ export default class Add extends Component {
     axios.put(this.props.url, data, axiosConfig)
     .then(response => {
       this.setState({request: response.data})
+      console.log(response.data);
     })
     .catch(function (error) {
       console.log(error);
@@ -58,7 +59,7 @@ export default class Add extends Component {
       return <main>
           <Title class='title delete' content={this.state.request}/><Back />
       </main>
-    } else if (this.state.request === 'Successfully edited') {
+    } else if (this.state.request === 'successfully updated') {
       return <main>
         <div className='container'>
           <Title class='title edit' content={this.state.request}/><Back />
