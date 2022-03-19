@@ -14,7 +14,8 @@ import React, { Component } from 'react';
 
 export default class App extends Component {
   state = {
-    url: 'http://localhost:8080/'
+    // url: 'http://localhost:8080/' // when backend launched locally
+    url: 'https://book-directory-backend.ainozerie1.repl.co/'
   }
   render() {
     return <BrowserRouter>
